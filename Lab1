@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string.h>
+#include <cctype> // для функции isalpha
+#include <locale.h>
+using namespace std;
+int main()
+{ 
+    srand(time(0));
+    setlocale(LC_CTYPE, "rus");
+    int *a ;
+    int n;
+cout << "Задача 1 " << endl;
+cout << "Размер = 10 "<< endl;
+    n=10;
+    a = new int[n]; // массив
+    
+cout << "Заполнение элементами"<< endl; 
+    for (int i=0;i<n;i++) a[i] =  rand()%20;
+    
+    for(int i=0;i<n;i++)cout << a[i] << " ";
+cout << endl;
+for(int i=0;i<n;i++)
+    {
+        if (a[i]%2==0)a[i]=0;
+    }
+cout << "Результат: " << endl;
+for(int i=0;i<n;i++)cout << a[i] << " " ;
+cout << endl;
+// строка буквы, цифры можно , пробелы и %?! нельзя
+//-------------------------------------------------
+ cout << "Задача 2 " << endl;
+ int k,k3,g;
+ char s;
+ string st;
+ string l ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжщийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ1234567890";
+        
+ cout << "Введи строку" << endl;
+ cin >> st;
+ cout << "Введи символ" << endl;
+ cin >> s;
+ //st[i]=toupper(st[i]);
+ g = st.length();
+ k=0;
+ for (int i = 0;i < g; i++)
+    {
+        //if ((isdigit(st[i]))||(isalpha(st[i]))){k=0;}
+        //if (isalnum(st[i])){k=0;}
+        if  (l.find(st[i],0) !=-1){k == 0;}
+        else { cout << "Введена не строка " << endl;k=-1; break;} // провекра на строку
+    }
+    if (k==0) cout << "Введена строка " << endl;
+    
+    if  (l.find(s,0)!=-1){cout << "Символ " << endl;} // проверка на символ
+    else cout << "Введен не символ " << endl;
+    
+    if (st.find(s,0)!=-1)cout << "Символ встречается в позиции " << st.find(s,0) << endl;
+    else cout << "Символ не встречается " <<  endl;
+    
+//-------------------------------------------------
+ cout << "Задача 3 " << endl;
+ int **m;
+ int f=3,b;
+ m = new int*[f];
+ for (int i=0;i<f;i++)
+        m[i] = new int[f];
+ cout << "Заполнение элементами"<< endl; 
+    for (int i=0;i<3;i++)
+    {
+        for (int j=0;j<3;j++)
+            {
+                m[i][j] =  rand()%20;
+            }           
+    } 
+    
+ cout<<"МАссив: "<<endl;
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<3;j++)
+        {
+            cout << m [i][j] << " ";
+        } cout << endl;
+    }
+    cout << endl;
+ cout<<"Определитель: "<<endl; 
+ b = m[0][0]*m[1][1]*m[2][2]+m[0][1]*m[1][2]*m[2][0]+m[0][2]*m[1][0]*m[2][1]-m[0][2]*m[1][1]*m[2][0]-m[0][1]*m[1][0]*m[2][2]-m[0][0]*m[1][2]*m[2][1];
+ cout << b;
+ 
+}
